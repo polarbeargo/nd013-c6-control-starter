@@ -38,11 +38,13 @@ void PID::UpdateError(double cte) {
 
 double PID::TotalError() {
   /**
-   * TODO: Calculate and return the total error
+   * Calculate and return the total error
    * The code should return a value in the interval [output_lim_mini,
    * output_lim_maxi]
    */
-  double control;
+  double control = -Kp * cte - Kd * diff_cte - Ki * int_cte;
+  control = min(control, output_lim_max);
+  control = max(control, output_lim_min);
   return control;
 }
 
