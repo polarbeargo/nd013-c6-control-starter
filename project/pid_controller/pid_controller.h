@@ -28,11 +28,12 @@ class PID {
   /*
    * Output limits
    */
-
+  double output_lim_max;
+  double output_lim_min;
   /*
    * Delta time
    */
-
+  double delta_time;
   /*
    * Constructor
    */
