@@ -50,6 +50,7 @@ double PID::TotalError() {
 
 double PID::UpdateDeltaTime(double new_delta_time) {
   /**
-   * TODO: Update the delta time with new value
+   * Update the delta time with new value
    */
+  delta_time = new_delta_time;
 }
