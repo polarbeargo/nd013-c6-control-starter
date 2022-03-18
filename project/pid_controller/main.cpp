@@ -287,9 +287,6 @@ int main() {
       // Steering control
       ////////////////////////////////////////
 
-      /**
-       *  (step 3): uncomment these lines
-       **/
       // Update the delta time with the previous command
       pid_steer.UpdateDeltaTime(new_delta_time);
 
@@ -302,24 +299,20 @@ int main() {
        * TODO (step 3): compute the steer error (error_steer) from the position
        *and the desired trajectory
        **/
-      //           error_steer = 0;
+      error_steer = 0;
 
-      /**
-       * TODO (step 3): uncomment these lines
-       **/
-      //           // Compute control to apply
-      //           pid_steer.UpdateError(error_steer);
-      //           steer_output = pid_steer.TotalError();
+      // Compute control to apply
+      pid_steer.UpdateError(error_steer);
+      steer_output = pid_steer.TotalError();
 
-      //           // Save data
-      //           file_steer.seekg(std::ios::beg);
-      //           for(int j=0; j < i - 1; ++j) {
-      //               file_steer.ignore(std::numeric_limits<std::streamsize>::max(),
-      //               '\n');
-      //           }
-      //           file_steer  << i ;
-      //           file_steer  << " " << error_steer;
-      //           file_steer  << " " << steer_output << endl;
+      // Save data
+      file_steer.seekg(std::ios::beg);
+      for (int j = 0; j < i - 1; ++j) {
+        file_steer.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      }
+      file_steer << i;
+      file_steer << " " << error_steer;
+      file_steer << " " << steer_output << endl;
 
       ////////////////////////////////////////
       // Throttle control
