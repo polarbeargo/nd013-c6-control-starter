@@ -318,21 +318,18 @@ int main() {
       // Throttle control
       ////////////////////////////////////////
 
-      /**
-       * TODO (step 2): uncomment these lines
-       **/
-      //           // Update the delta time with the previous command
-      //           pid_throttle.UpdateDeltaTime(new_delta_time);
+      // Update the delta time with the previous command
+      pid_throttle.UpdateDeltaTime(new_delta_time);
 
       // Compute error of speed
-      double error_throttle;
+      double error_throttle = 0.0;
       /**
-       * TODO (step 2): compute the throttle error (error_throttle) from the
+       * (step 2): compute the throttle error (error_throttle) from the
        *position and the desired speed
        **/
       // modify the following line for step 2
-      error_throttle = 0;
-
+      error_throttle = v_points[v_points.size()-1] - velocity;
+      
       double throttle_output;
       double brake_output;
 
