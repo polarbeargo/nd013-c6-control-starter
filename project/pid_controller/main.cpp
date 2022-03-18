@@ -288,10 +288,10 @@ int main() {
       ////////////////////////////////////////
 
       /**
-       * TODO (step 3): uncomment these lines
+       *  (step 3): uncomment these lines
        **/
-      //           // Update the delta time with the previous command
-      //           pid_steer.UpdateDeltaTime(new_delta_time);
+      // Update the delta time with the previous command
+      pid_steer.UpdateDeltaTime(new_delta_time);
 
       // Compute steer error
       double error_steer;
