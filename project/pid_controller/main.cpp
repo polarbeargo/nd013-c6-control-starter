@@ -299,8 +299,12 @@ int main() {
        * (step 3): compute the steer error (error_steer) from the position
        *and the desired trajectory
        **/
-      error_steer =angle_between_points(x_points[x_points.size()-2], y_points[y_points.size()-2], x_points[x_points.size()-1], y_points[y_points.size()-1])-yaw
-      
+      error_steer = angle_between_points(x_points[x_points.size() - 2],
+                                         y_points[y_points.size() - 2],
+                                         x_points[x_points.size() - 1],
+                                         y_points[y_points.size() - 1]) -
+                    yaw;
+
       // Compute control to apply
       pid_steer.UpdateError(error_steer);
       steer_output = pid_steer.TotalError();
