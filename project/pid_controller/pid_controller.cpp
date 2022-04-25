@@ -30,10 +30,13 @@ void PID::Init(double Kpi, double Kii, double Kdi, double output_lim_maxi,
   int_cte = 0.0;
 }
 
-void PID::UpdateError(double cte) {
+void PID::UpdateError(double current_cte) {
   /**
-   * TODO: Update PID errors based on cte.
+   * Update PID errors based on cte.
    **/
+   double prev_cte =cte;
+   diff_cte = (current_cte-prev_cte)/delta_time;
+   int_cte += cte*delta_time;
 }
 
 double PID::TotalError() {
