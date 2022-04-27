@@ -25,18 +25,30 @@ void PID::Init(double Kpi, double Kii, double Kdi, double output_lim_maxi,
   Kd = Kdi;
   output_lim_max = output_lim_maxi;
   output_lim_min = output_lim_mini;
-  cte = 0.0;
-  diff_cte = 0.0;
-  int_cte = 0.0;
+  p_error = 0.0;
+  i_error = 0.0;
+  d_error = 0.0;
 }
 
-void PID::UpdateError(double current_cte) {
+void PID::UpdateError(double cte, bool debugMode = false) {
   /**
    * Update PID errors based on cte.
    **/
-   double prev_cte =cte;
-   diff_cte = (current_cte-prev_cte)/delta_time;
-   int_cte += cte*delta_time;
+  //sanity check to avoid division by zero
+  if(delta_time>0){
+    d_error = (cte - p_error)/delta_time;
+  }else{
+    d_error = 0.0;
+  }
+  p_error = cte;
+  i_error += cte*delta_time;
+
+  if(debugMode){
+  // debugging error signals to monitor performance of the controller
+  cout << "######## p_error #######:"<< p_error << endl;
+  cout << "######## d_error #######:"<< d_error << endl;
+  cout << "######## i_error #######:"<< i_error << endl;
+  }
 }
 
 double PID::TotalError() {
@@ -45,10 +57,14 @@ double PID::TotalError() {
    * The code should return a value in the interval [output_lim_mini,
    * output_lim_maxi]
    */
-  double control = -Kp * cte - Kd * diff_cte - Ki * int_cte;
-  control = min(control, output_lim_max);
-  control = max(control, output_lim_min);
-  return control;
+  double control;
+  control = -Kp * p_error - Kd * i_error - Ki * d_error;
+  if (control < output_lim_min) {
+    control = output_lim_min;
+  }else if (control > output_lim_max){
+    control = output_lim_max;
+  }
+return control;
 }
 
 double PID::UpdateDeltaTime(double new_delta_time) {
@@ -56,5 +72,5 @@ double PID::UpdateDeltaTime(double new_delta_time) {
    * Update the delta time with new value
    */
   delta_time = new_delta_time;
-  return delta_time
+  return delta_time;
 }

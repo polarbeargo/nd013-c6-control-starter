@@ -294,7 +294,7 @@ int main ()
           // Compute steer error
           double error_steer;
 
-
+		  bool debugMode;
           double steer_output;
 
           /**
@@ -310,7 +310,7 @@ int main ()
           * (step 3): uncomment these lines
           **/
           // Compute control to apply
-          pid_steer.UpdateError(error_steer);
+          pid_steer.UpdateError(error_steer,debugMode = false);
           steer_output = pid_steer.TotalError();
 
           // Save data
@@ -347,7 +347,7 @@ int main ()
           * (step 2): uncomment these lines
           **/
           // Compute control to apply
-          pid_throttle.UpdateError(error_throttle);
+          pid_throttle.UpdateError(error_throttle,debugMode = false);
           double throttle = pid_throttle.TotalError();
 
           // Adapt the negative throttle to break

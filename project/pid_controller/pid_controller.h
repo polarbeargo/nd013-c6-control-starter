@@ -16,9 +16,9 @@ class PID {
   /*
    * Errors
    */
-  double cte;
-  double diff_cte;
-  double int_cte;
+  double p_error;
+  double i_error;
+  double d_error;
   /*
    * Coefficients
    */
@@ -53,7 +53,7 @@ class PID {
   /*
    * Update the PID error variables given cross track error.
    */
-  void UpdateError(double cte);
+  void UpdateError(double cte, bool debugMode);
 
   /*
    * Calculate the total PID error.
