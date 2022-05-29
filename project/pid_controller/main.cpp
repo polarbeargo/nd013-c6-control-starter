@@ -219,14 +219,14 @@ int main ()
   * (Step 1): create pid (pid_steer) for steer command and initialize values
   **/
   PID pid_steer = PID();
-  pid_steer.Init(0.38, 0.29, 0.19, 1.2, -1.2);
+  pid_steer.Init(0.29, 0.0011,0.71, 1.2, -1.2);
 
   // initialize pid throttle
   /**
   * (Step 1): create pid (pid_throttle) for throttle command and initialize values
   **/
   PID pid_throttle = PID();
-  pid_throttle.Init(0.4, 0.19, 0.1, 1, -1);
+  pid_throttle.Init(0.21,0.001,0.019, 1, -1);
   
   h.onMessage([&pid_steer, &pid_throttle, &new_delta_time, &timer, &prev_timer, &i, &prev_timer](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode)
   {
@@ -348,7 +348,7 @@ int main ()
            // modify the following line for step 2
 		      error_throttle = 0;
 //           error_throttle =  velocity - accumulate(v_points.begin(), v_points.end(), 0)/v_points.size();
-		      error_throttle = v_points[close_id] - velocity;
+		  error_throttle = v_points[close_id] - velocity;
           double throttle_output;
           double brake_output;
 
