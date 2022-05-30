@@ -1,6 +1,6 @@
 * Add the plots to your report and explain them (describe what you see)  
-[](./screenshots/Figure_1.png)  
-[](./screenshots/Figure_2.png)  
+![](./screenshots/Figure_1.png)  
+![](./screenshots/Figure_2.png)  
 * What is the effect of the PID according to the plots, how each part of the PID affects the control command?  
 
 * How would you design a way to automatically tune the PID parameters?  
