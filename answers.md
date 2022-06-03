@@ -9,7 +9,16 @@
 * How would you design a way to automatically tune the PID parameters?
   - Implementing twiddle algorithm to optimize a set of  parameters which was covered in PID control Parameter Optimization lesson. By offering initial values for the PID parameters and probing intervals we can run the PID controller and analyze the control output and tweaking the parameters up and down by examining the outcome, calculates the new quality marker and replaces the parameters only if the result is better.
 
-* PID controller is a model free controller, i.e. it does not use a model of the car. Could you explain the pros and cons of this type of controller?  
-
+* PID controller is a model free controller, i.e. it does not use a model of the car. Could you explain the pros and cons of this type of controller?   
+  - Pros: PID controller can run in real-time making it idealized for self-driving cars. It's broadly known and widely used within the industry like temperature and ph control. Temperature control of Furnace which is used for heating at high temperatures has a high quantity of inertia to moderately stable signal for fault detection. PH control is widely viewed in the industry as to control.
+PID Controllers are mostly used in converters. and can be connected to numerous distinctive issues, not only steering and throttle control. 
+  - Cons: The only disadvantage is the tuning methodology.  
 * (Optional) What would you do to improve the PID controller?   
-  - PID controller should be fine-tuned by attempting different scenarios with higher speeds and dividing a few ranges of speed that would utilize diverse parameters.
+  - PID controller should be fine-tuned by attempting different scenarios with higher speeds and dividing a few ranges of speed that would utilize diverse parameters.  
+
+### Result:    
+[https://youtu.be/0PO0DbaaFKI](https://youtu.be/0PO0DbaaFKI)  
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/0PO0DbaaFKI/0.jpg)](https://youtu.be/0PO0DbaaFKI)
+
+
+
